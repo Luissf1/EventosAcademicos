@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evento__autors', function (Blueprint $table) {
-            $table->id();
+        Schema::create('correo__participantes', function (Blueprint $table) {
+            $table->string("correo_participante");
+            //$table->foreignId("participante_id")->references('id')->on('participantes')->constrained()->cascadeOnDelete();
+            $table->foreignId("participante_id")->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evento__autors');
+        Schema::dropIfExists('correo__participantes');
     }
 };

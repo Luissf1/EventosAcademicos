@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('asistentes', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre_asistente");
+            $table->string("apellidopat_asistente");
+            $table->string("apellidomat_asistente");
+            $table->foreignId("autor_id")->constrained()->cascadeOnDelete();
+            //$table->foreignId("autor_id")->references('id')->on('autors')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

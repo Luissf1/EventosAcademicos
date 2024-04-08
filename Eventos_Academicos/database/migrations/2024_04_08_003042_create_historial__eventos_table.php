@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('historial__eventos', function (Blueprint $table) {
             $table->id();
+            //$table->foreignId("evento_id")->references('id')->on('eventos')->constrained()->cascadeOnDelete();
+            $table->foreignId("evento_id")->constrained()->cascadeOnDelete();
+            $table->string("nombre_historialevento");
+            $table->date("Fecha_HistorialEvento");            
             $table->timestamps();
         });
     }

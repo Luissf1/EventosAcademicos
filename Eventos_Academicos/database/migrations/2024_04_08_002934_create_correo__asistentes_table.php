@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_eventos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('correo__asistentes', function (Blueprint $table) {
+            //$table->foreignId("asistente_id")->references('id')->on('asistentes')->constrained()->cascadeOnDelete();
+            $table->foreignId("asistente_id")->constrained()->cascadeOnDelete();
+            $table->string("correo_asistente");
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_eventos');
+        Schema::dropIfExists('correo__asistentes');
     }
 };

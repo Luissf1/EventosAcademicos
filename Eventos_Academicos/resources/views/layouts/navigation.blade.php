@@ -21,6 +21,15 @@
                     <x-nav-link :href="route('autor.index')" :active="request()->routeIs('autor.index')">
                         {{ __('Autor') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('asistente.index')" :active="request()->routeIs('asistente.index')">
+                        {{ __('Asistente') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('inscripcion.index')" :active="request()->routeIs('inscripcion.index')">
+                        {{ __('Inscripcion') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('participante.index')" :active="request()->routeIs('participante.index')">
+                        {{ __('Participante') }}
+                    </x-nav-link>
                 </div>
             </div>
 

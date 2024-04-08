@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class EventosController extends Controller
+class AsistenteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index():View
+    public function index()
     {
-        return view('eventos\index');
+        //
     }
 
     /**

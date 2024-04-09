@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Asistente extends Model
 {
@@ -19,5 +20,9 @@ class Asistente extends Model
 
     public function autor():BelongsTo{
         return $this-> belongsTo(Autor::class);
+    }
+
+    public function correo_autor():HasMany{
+        return $this-> hasMany(Correo_Autor::class);
     }
 }

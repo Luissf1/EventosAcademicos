@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Afiliacion;
 use App\Models\Autor;
+use App\Models\TipoEvento;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,10 @@ class DatabaseSeeder extends Seeder
         Autor::create(['nombre_autor' =>'Ana', 'apellidopat_autor' =>'Garcia', 'apellidomat_autor' =>'Rodriguez', 'afiliacion_id' => 3]);
         Autor::create(['nombre_autor' =>'Javier', 'apellidopat_autor' =>'Lopez', 'apellidomat_autor' =>'Martinez', 'afiliacion_id' => 1]);
         Autor::create(['nombre_autor' =>'Maria', 'apellidopat_autor' =>'Fernandez', 'apellidomat_autor' =>'Perez', 'afiliacion_id' => 2]);
+
+        TipoEvento::create(['nombre_tipoevento' =>'Computacion Evolutiva']);
+        TipoEvento::create(['nombre_tipoevento'=>'Sistemas Difusos']);
+        TipoEvento::create(['nombre_tipoevento'=>'Redes Neuronales']);
 
     }
 }

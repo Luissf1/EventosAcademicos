@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateEventRequest;
+use App\Models\Evento;
+use App\Models\TipoEvento;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -20,15 +23,18 @@ class EventosController extends Controller
      */
     public function create():View
     {
-        return view('eventos\create');
+        $tipoevento = TipoEvento::all();
+        return view('eventos\create',compact('tipoevento'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateEventRequest $request)
     {
-        //
+        $data = $request -> validated();
+        Evento::create($data);
+        return to_route('eventos.index');
     }
 
     /**

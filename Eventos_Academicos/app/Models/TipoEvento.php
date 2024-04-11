@@ -18,4 +18,6 @@ class TipoEvento extends Model
         return $this-> hasMany(Evento::class);
     }
 
+    
+
 }

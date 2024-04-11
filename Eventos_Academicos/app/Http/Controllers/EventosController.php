@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use App\Models\Evento;
 use App\Models\TipoEvento;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+//use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-
+use Illuminate\View\View;
 class EventosController extends Controller
 {
     /**
@@ -15,7 +17,8 @@ class EventosController extends Controller
      */
     public function index():View
     {
-        return view('eventos\index');
+        $eventos =Evento::with('tipoevento')->get();
+        return view('eventos.index',compact('eventos'));
     }
 
     /**
@@ -24,17 +27,24 @@ class EventosController extends Controller
     public function create():View
     {
         $tipoevento = TipoEvento::all();
-        return view('eventos\create',compact('tipoevento'));
+        return view('eventos.create',compact('tipoevento'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateEventRequest $request)
+    public function store(CreateEventRequest $request):RedirectResponse
     {
+        $tipoevento = $request->tipo_evento_id;
         $data = $request -> validated();
         Evento::create($data);
-        return to_route('eventos.index');
+
+        $notification = array(
+            'message' => 'Evento agregado',
+            'alert-type' => 'info'
+        );
+
+        return to_route('evento.index')->with($notification);
     }
 
     /**
@@ -48,15 +58,16 @@ class EventosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Evento $evento):View
     {
-        //
+        $tipoevento = TipoEvento::all();
+        return view('eventos.edit',compact('tipoevento','evento'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateEventRequest $request, Evento $evento):RedirectResponse
     {
         //
     }

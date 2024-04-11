@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('eventos/{evento}', function (Evento $evento) {
         return response()->json($evento->tipoevento);
     });
+
 });
 
 require __DIR__ . '/auth.php';

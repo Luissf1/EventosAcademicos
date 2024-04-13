@@ -35,7 +35,7 @@ class EventosController extends Controller
      */
     public function store(CreateEventRequest $request):RedirectResponse
     {
-        $tipoevento = $request->tipo_evento_id;
+        //$tipoevento = $request->tipo_evento_id;
         $data = $request -> validated();
         Evento::create($data);
 
@@ -68,8 +68,11 @@ class EventosController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateEventRequest $request, Evento $evento):RedirectResponse
-    {
-        //
+    {  
+       $data= $request->validated();
+       $evento->update($data);
+        return to_route('evento.index');
+        
     }
 
     /**

@@ -61,24 +61,44 @@ class AutorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Autor $autor): View
     {
-        //
+        $afiliacion = Afiliacion::all();
+        return view('autores.edit', compact('afiliacion', 'autor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Autor $autor)
     {
-        //
+        $autor->update([
+            'nombre_autor' => $request->input('nombre_autor'),
+            'apellidopat_autor' => $request->input('apellidopat_autor'),
+            'apellidomat_autor' => $request->input('apellidomat_autor'),
+            'afiliacion_id' => $request->input('afiliacion_id'),
+        ]);
+
+        $notification = array(
+            'message' => 'Autor actualizado',
+            'alert-type' => 'info'
+        );
+
+        return to_route('autor.index')->with($notification);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Autor $autor)
     {
-        //
+        $autor->delete();
+        
+        $notification = array(
+            'message' => 'Autor eliminado',
+            'alert-type' => 'info'
+        );
+
+        return to_route('autor.index')->with($notification);
     }
 }

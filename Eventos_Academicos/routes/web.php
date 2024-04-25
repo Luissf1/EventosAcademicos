@@ -6,12 +6,11 @@ use App\Http\Controllers\EventosController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\ParticipanteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Evento;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', WelcomeController::class)->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

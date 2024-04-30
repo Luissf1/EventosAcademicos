@@ -1,4 +1,5 @@
 <x-main-layout>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- component -->
     <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">
@@ -11,9 +12,11 @@
 
                     <div class="flex flex-col justify-between py-6 lg:mx-6">
                         <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
-                        {{$evento->nombre_evento}}
+                            {{$evento->nombre_evento}}
                         </a>
+                        <span class="text-sm text-gray-500 dark:text-gray-300">{{$evento->enlace_evento}}</span>
                         <span class="text-sm text-gray-500 dark:text-gray-300">{{$evento->fecha_evento}}</span>
+
                     </div>
                 </div>
                 @endforeach

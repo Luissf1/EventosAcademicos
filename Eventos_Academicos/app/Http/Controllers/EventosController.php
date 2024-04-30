@@ -33,11 +33,18 @@ class EventosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateEventRequest $request):RedirectResponse
+    public function store(Request $request)
     {
         //$tipoevento = $request->tipo_evento_id;
-        $data = $request -> validated();
-        Evento::create($data);
+        //$data = $request -> validated();
+        //Evento::create($data);
+
+        Evento::create([
+            'nombre_evento' => $request->input('nombre_evento'),
+            'enlace_evento' => $request->input('enlace_evento'),
+            'fecha_evento' => $request->input('fecha_evento'),
+            'tipo_evento_id' => $request->input('tipo_evento_id'),
+        ]);
 
         $notification = array(
             'message' => 'Evento agregado',
@@ -67,11 +74,21 @@ class EventosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEventRequest $request, Evento $evento):RedirectResponse
+    public function update(Request $request, Evento $evento)
     {  
-       $data= $request->validated();
-       $evento->update($data);
-        return to_route('evento.index');
+        $evento->update([
+            'nombre_evento' => $request->input('nombre_evento'),
+            'enlace_evento' => $request->input('enlace_evento'),
+            'fecha_evento' => $request->input('fecha_evento'),
+            'tipo_evento_id' => $request->input('tipo_evento_id'),
+        ]);
+
+        $notification = array(
+            'message' => 'Evento actualizado',
+            'alert-type' => 'info'
+        );
+
+        return to_route('evento.index')->with($notification);
         
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participantes;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ParticipanteController extends Controller
      */
     public function index():View
     {
-        return view('participantes\index');
+        $participantes = Participantes::with('correo_participante')->get();
+        return view('participantes\index', compact('participantes'));
     }
 
     /**

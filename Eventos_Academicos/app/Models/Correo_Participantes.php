@@ -11,7 +11,7 @@ class Correo_Participantes extends Model
     use HasFactory;
 
     protected $fillable=[
-        'correo_participante',
+        'correo_participantes',
         'participante_id',        
     ];
 

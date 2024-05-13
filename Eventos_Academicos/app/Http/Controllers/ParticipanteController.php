@@ -16,7 +16,7 @@ class ParticipanteController extends Controller
     public function index(): View
     {
         //$participantes = Participantes::with('correo_participante')->get();
-        $participantes = Participantes::has('correo_participantes')->with('correo_participantes')->get();
+        $participantes = Participantes::has('correo_participantes');
 
         return view('participantes\index', compact('participantes'));
     }
@@ -27,8 +27,9 @@ class ParticipanteController extends Controller
     public function create(): View
     {
         //$correoparticipante = Correo_Participantes::all();
-        //return view('participantes.create', compact('correoparticipante'));
-        return view('participantes.create');
+        $correoparticipante =Participantes::has('correo_participantes');
+        return view('participantes.create', compact('correoparticipante'));
+        //return view('participantes.create');
     }
 
     /**
@@ -42,10 +43,10 @@ class ParticipanteController extends Controller
             'apellidomat_participante' => $request->input('apellidomat_participante'),
         ]);
 
-        /*$correo->create([
+        $correo->create([
             'participante_id' => $participante->id,
-            'correo_participante' => $request->input('correo_participante'),
-        ]);*/
+            'correo_participante' => $request->input('$correo_participante'),
+        ]);
 
         $notification = array(
             'message' => 'Participante agregado',

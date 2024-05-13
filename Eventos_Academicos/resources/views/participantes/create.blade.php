@@ -35,7 +35,7 @@
                     </div>
                     <div>
                         <label for="correo_participante" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo participante</label>
-                        <input type="text" id="correo_participante" name="correo_participante" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ingresar su apellido materno">
+                        <input type="text" id="correo_participante" name="correo_participante" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ingresar su correo">
                         @error('correo_participante')
                         <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror

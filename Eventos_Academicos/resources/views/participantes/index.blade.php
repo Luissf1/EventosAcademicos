@@ -46,6 +46,7 @@
                                 {{ $participante->apellidomat_participante}}
                             </td>
                             <td class="px-6 py-4">
+                            {{ $participante->correo_participante}}
                             </td>
 
                             <td class="px-6 py-4">

@@ -46,7 +46,7 @@
                                 {{ $evento->fecha_evento}}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $evento->tipoevento->nombre_tipoevento?? 'Null'}}
+                                {{ $evento->tipo_evento_id ?? 'Null'}}
                             </td>
 
                             <td class="px-6 py-4">
